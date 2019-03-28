@@ -1,23 +1,23 @@
-import _ from './util.js'
+import _ from './util'
 
 export default {
   bind: function (el, binding, vnode) {
     const MIN_LIMIT = _.MIN_LIMIT
 
-    el.addEventListenser('mousedown', handleMouseDown)
+    el.addEventListener('mousedown', handleMouseDown)
 
     function handleMouseDown (e) {
       e && e.preventDefault()
 
       let itemInfo = {
         top: _.getDistanceY(e, el),
-        left: _.getDistanceY(e, el),
+        left: _.getDistanceX(e, el),
         width: 0,
         height: 0
       }
       let container = _.getOffset(el)
 
-      // 距离转化为百分比，只在初始化时调用一次
+      // Only used once at the beginning of init
       let setting = {
         topPer: _.decimalPoint(itemInfo.top / container.height),
         leftPer: _.decimalPoint(itemInfo.left / container.width),
@@ -40,11 +40,11 @@ export default {
         preX = _.getPageX(e)
         preY = _.getPageY(e)
 
-        // 不考虑移动方向，只考虑右下角
+        // Not consider the direction of movement first, consider only the lower right drag point
         let minLimit = 0
         let styleInfo = _.dealBR(itemInfo, moveX, moveY, minLimit)
 
-        // 处理边界值
+        // Boundary value processing
         itemInfo = _.dealEdgeValue(itemInfo, styleInfo, container)
 
         Object.assign(el.lastElementChild.style, {
@@ -63,8 +63,6 @@ export default {
           heightPer: _.decimalPoint(itemInfo.height / container.height)
         }
 
-        // 通过当前鼠标松开的位置
-        // 判断图片容器和热区框越界问题
         if (vnode.context.isOverRange()) {
           vnode.context.overRange()
         } else if (container.height < MIN_LIMIT && itemInfo.width > MIN_LIMIT) {

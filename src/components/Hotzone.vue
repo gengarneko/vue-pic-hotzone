@@ -6,6 +6,7 @@
     <img class="hz-u-img" :src="image" alt="cover">
     <ul
       class="hz-m-area"
+      v-addItem
     >
       <zone
         class="hz-m-item"
@@ -93,7 +94,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .hz-m-wrap {
   position: relative;
   /*overflow: hidden;*/
@@ -123,7 +124,7 @@ export default {
   width: 100%;
   height: 100%;
   box-shadow: 0 0 6px #000;
-  background-color: #e31414;
+  background-color: rgba(0, 0, 0, 0.4);
   font-size: 12px;
   cursor: pointer;
   color: #fff;

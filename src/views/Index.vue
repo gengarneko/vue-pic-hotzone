@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>VUE-HOTZONE</h1>
+    <h1>小语言图片热区功能</h1>
     <hr>
-    <h2>让我们一起来试一试</h2>
+    <h2>动手试一试</h2>
     <!-- 操作区域 -->
     <hotzone
       :image="image"
@@ -20,7 +20,7 @@
       :placeholder="`Area ${index + 1} url`"
     >
     <!-- 展示区域 -->
-    <h2>试一试生成好的图片</h2>
+    <h2>生成好的图片</h2>
     <div class="wrap">
       <img :src="image" alt="cover">
       <div
@@ -50,7 +50,7 @@ export default {
   },
   data () {
     return {
-      image: 'https://haitao.nos.netease.com/EbrC2L4UuXFI1CPmWall%20o207T1705221905_1920_1080.jpg',
+      image: 'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-697888.jpg',
       zones: [
         {
           heightPer: 0.4374,
@@ -109,7 +109,7 @@ export default {
   position: absolute;
   cursor: pointer;
 
-  border: 2px dashed red;
+  border: 1px dashed #eeeeee;
 }
 
 input {

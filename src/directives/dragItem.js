@@ -1,4 +1,4 @@
-import _ from './index.js'
+import _ from './util.js'
 
 export default {
   bind: function (el, binding, vnode) {
@@ -22,7 +22,7 @@ export default {
         flag = true
 
         // Hide the info displayed by hover
-        vnode.context.handlehideZone(true)
+        vnode.context.handleHideZone(true)
 
         let setting = vnode.context.setting
         let moveX = _.getPageX(e) - preX
@@ -68,7 +68,7 @@ export default {
         }
 
         // Show the info
-        vnode.context.handlehideZone(false)
+        vnode.context.handleHideZone(false)
 
         window.removeEventListener('mousemove', handleChange)
         window.removeEventListener('mouseup', handleMouseUp)
